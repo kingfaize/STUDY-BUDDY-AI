@@ -9,14 +9,9 @@ pipeline {
         stage('Checkout Github') {
             steps {
                 echo 'Checking out code from GitHub...'
-                stage('Checkout Github') {
-    steps {
-        echo 'Checking out code from GitHub...'
-        git url: 'https://github.com/kingfaize/STUDY-BUDDY-AI.git', branch: 'main', credentialsId: 'github-token'
-    }
-}
+                git url: 'https://github.com/kingfaize/STUDY-BUDDY-AI.git', branch: 'main', credentialsId: 'github-token'
             }
-        }        
+        }
         // stage('Build Docker Image') {
         //     steps {
         //         script {
@@ -50,11 +45,11 @@ pipeline {
         //         script {
         //             withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
         //                 sh '''
-        //                 git config user.name "data-guru0"
+        //                 git config user.name "kingfaize"
         //                 git config user.email "gyrogodnon@gmail.com"
         //                 git add manifests/deployment.yaml
         //                 git commit -m "Update image tag to ${IMAGE_TAG}" || echo "No changes to commit"
-        //                 git push https://${GIT_USER}:${GIT_PASS}@github.com/data-guru0/STUDY-BUDDY-AI.git HEAD:main
+        //                 git push https://${GIT_USER}:${GIT_PASS}@github.com/kingfaize/STUDY-BUDDY-AI.git HEAD:main
         //                 '''
         //             }
         //         }

@@ -9,7 +9,12 @@ pipeline {
         stage('Checkout Github') {
             steps {
                 echo 'Checking out code from GitHub...'
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/kingfaize/STUDY-BUDDY-AI.git']]) [[credentialsId: 'github-token', url: 'https://github.com/kingfaize/STUDY-BUDDY-AI.git']]
+                stage('Checkout Github') {
+    steps {
+        echo 'Checking out code from GitHub...'
+        git url: 'https://github.com/kingfaize/STUDY-BUDDY-AI.git', branch: 'main', credentialsId: 'github-token'
+    }
+}
             }
         }        
         // stage('Build Docker Image') {

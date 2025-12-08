@@ -65,6 +65,7 @@ def main():
         st.session_state.quiz_manager.attempt_quiz()
 
         if st.button("Submit Quiz"):
+            st.session_state.quiz_manager.collect_answers()
             st.session_state.quiz_manager.evaluate_quiz()
             st.session_state.quiz_submitted = True
             rerun()

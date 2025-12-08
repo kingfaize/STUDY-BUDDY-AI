@@ -47,25 +47,28 @@ class QuizManager:
     
 
     def attempt_quiz(self):
-        for i,q in enumerate(self.questions):
+        for i, q in enumerate(self.questions):
             st.markdown(f"**Question {i+1} : {q['question']}**")
-
-            if q['type']=='MCQ':
-                user_answer = st.radio(
+            if q['type'] == 'MCQ':
+                st.radio(
                     f"Select and answer for Question {i+1}",
                     q['options'],
                     key=f"mcq_{i}"
                 )
-
-                self.user_answers.append(user_answer)
-
             else:
-                user_answer=st.text_input(
+                st.text_input(
                     f"Fill in the blank for Question {i+1}",
-                    key = f"fill_blank_{i}"
+                    key=f"fill_blank_{i}"
                 )
 
-                self.user_answers.append(user_answer)
+    def collect_answers(self):
+        self.user_answers = []
+        for i, q in enumerate(self.questions):
+            if q['type'] == 'MCQ':
+                answer = st.session_state.get(f"mcq_{i}", "")
+            else:
+                answer = st.session_state.get(f"fill_blank_{i}", "")
+            self.user_answers.append(answer)
 
     def evaluate_quiz(self):
         self.results=[]

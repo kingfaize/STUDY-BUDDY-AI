@@ -32,7 +32,7 @@ def main():
         index=0
     )
 
-    topic = st.sidebar.text_input("Ennter Topic" , placeholder="Indian History, geography")
+    topic = st.sidebar.text_input("Enter Topic" , placeholder="Indian History, geography")
 
     difficulty = st.sidebar.selectbox(
         "Dificulty Level",
